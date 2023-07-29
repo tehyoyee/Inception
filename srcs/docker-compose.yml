@@ -12,7 +12,7 @@ services:
     depends_on:
       - wordpress
     networks:
-      - inception_network
+      - inception
 
   wordpress:
     build: ./requirements/wordpress
@@ -25,7 +25,7 @@ services:
     depends_on :
       - mariadb
     networks:
-      - inception_network
+      - inception
     env_file:
       - .env
 
@@ -36,7 +36,7 @@ services:
       - "3306"
     restart: always
     networks:
-      - inception_network
+      - inception
     volumes:
       - db:/var/lib/mysql
     env_file:
@@ -58,5 +58,5 @@ volumes:
       device: /home/taehykim/data/db
 
 networks:
-  inception_network:
+  inception:
     driver: bridge
