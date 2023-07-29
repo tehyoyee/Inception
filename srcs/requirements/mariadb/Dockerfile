@@ -2,7 +2,7 @@ FROM debian:bullseye
 
 RUN apt update
 RUN apt install -y mariadb-server
-COPY conf/dbinit.sq /
+COPY conf/dbinit.sql /
 RUN rm /etc/mysql/mariadb.conf.d/50-server.cnf
 COPY conf/50-server.cnf /etc/mysql/mariadb.conf.d
 
