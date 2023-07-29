@@ -8,7 +8,7 @@ services:
       - 443:443
     restart: always
     volumes:
-      - wp_volume:/var/www/html
+      - wp:/var/www/wordpress
     depends_on:
       - wordpress
     networks:
