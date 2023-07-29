@@ -1,17 +1,7 @@
-FROM	alpine:3.16
+FROM debian:bullseye
 
-RUN		apk update && \
-		apk upgrade && \
-		apk add --no-cache \
-		mariadb-client \
-		wget \
-		curl \
-		php8-fpm \
-		php8-cli \
-		php8-mysqli \
-		php8-phar \
-		php8-iconv \
-		sudo
+RUN apt update
+RUN mariadb-client wget curl php-fpm php8-cli php8-mysqli php8-phar php8-iconv sudo
 
 # Create www-data user and assign to the existing www-data group
 RUN		adduser -S -D -H -h /var/www -s /sbin/nologin -G www-data -g 'Web Server' www-data
