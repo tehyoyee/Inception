@@ -4,7 +4,7 @@
  */
 
 /** The name of the database for WordPress */
-define('DB_NAME', 'Base');
+define('DB_NAME', 'wordpress');
 
 /** MySQL database username */
 define('DB_USER', 'taehykim');
@@ -23,7 +23,7 @@ define('DB_COLLATE', '');
 
 //** Redis cache settings. */
 define('WP_CACHE', true);
-define('WP_CACHE_KEY_SALT', 'bcaffere.42.fr');
+define('WP_CACHE_KEY_SALT', 'taehykim.42.fr');
 
 //** Try Redis container */
 define('WP_REDIS_HOST', 'redis');
