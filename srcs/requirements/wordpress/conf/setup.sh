@@ -29,4 +29,4 @@ fi
 
 # wp redis enable --force --allow-root?
 
-/usr/sbin/php-fpm7.4 -F
+/usr/sbin/php-fpm7.3 -F
