@@ -5,11 +5,11 @@ RUN apt update; \
 RUN apt install -y mariadb-client \
 		wget \
 		curl \
-		php8-fpm \
-		php8-cli \
-		php8-mysqli \
-		php8-phar \
-		php8-iconv \
+		php7.4-fpm \
+		php-cli \
+		php-mysqli \
+		php-phar \
+		php-iconv \
 		sudo
 RUN wget https://wordpress.org/latest.tar.gz
 RUN tar -xvf latest.tar.gz
