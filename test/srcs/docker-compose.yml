@@ -11,6 +11,8 @@ services:
      - "3306"
     networks:
      - intra
+    env_file:
+     - .env
 
   nginx:
     build: ./requirements/nginx
@@ -37,7 +39,8 @@ services:
      - mariadb
     networks:
      - intra
-    tty: true
+    env_file:
+     -.env
 networks:
   intra:
     driver: bridge
