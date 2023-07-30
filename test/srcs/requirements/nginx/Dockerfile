@@ -1,5 +1,9 @@
 FROM debian:bullseye
 
+ENV USER=user1
+
+# system 시간과 달라서 문제가 되어 시간 맞춰주는 명령 실행 후 실행
+RUN echo "Acquire::Check-Valid-Until \"false\";\nAcquire::Check-Date \"false\";" | cat > /etc/apt/apt.conf.d/10no--check-valid-until
 RUN apt update
 RUN apt install -y nginx openssl
 
