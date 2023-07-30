@@ -4,13 +4,13 @@
  */
 
 /** The name of the database for WordPress */
-define('DB_NAME', 'wordpress');
+define('DB_NAME', 'wb');
 
 /** MySQL database username */
-define('DB_USER', 'taehykim');
+define('DB_USER', 'tae');
 
 /** MySQL database password */
-define('DB_PASSWORD', '1234taehy');
+define('DB_PASSWORD', '1234tae');
 
 /** MySQL hostname */
 define('DB_HOST', 'mariadb');

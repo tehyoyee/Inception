@@ -1,0 +1,90 @@
+MARIADB
+
+apt update -y
+apt install -y mariadb-server
+apt install -y vim
+vim /etc/mysql/mariadb.conf.d/50-server.cnf
+service mariadb start
+mysql
+CREATE DATABASE wordpress_db;
+CREATE USER 'tae'@'%' IDENTIFIED BY '1234tae';
+GRANT ALL ON wordpress_db.* TO 'tae'@'%';
+FLUSH PRIVILEGES;
+172.20.0.2
+
+
+WORDPRESS
+
+apt update -y
+apt install -y mariadb-client
+
+mysql -u tae -p1234tae -h 172.20.0.2
+
+apt get -y install php7.4 php-fpm php-cli \
+	wget curl php-mysql php-mbstring php-xml sendmail vim
+
+wget https::wordpress.org/latest.tar.gz && tar -xvf latest.tar.gz && \
+mv /wordpress/* /var/www/html/ && \
+chown -R www-data:www-data /var/www/html && \
+rm -r /wordpress latest.tar.gz
+
+
+ls -l /var/www/html/
+
+mv /var/www/html/wp-config-sample.php /var/www/html/wp-config.php
+vim /var/www/html/wp-config.php
+
+vim /etc/php/7.4/fpm/pool.d/www.conf
+listen = 0.0.0.0:9000
+
+php7.4-fpm start
+hostname -i 172.20.0.3
+
+
+NGINX
+
+apt update
+apt install -y nginx openssl vim
+
+openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/server_pkey.pem -out /etc/ssl/certs/server.crt
+
+Country Name: KR
+State or Province Name: Seoul
+Locality NAme: Jungrang-gu
+Organization NAme : 42Seoul
+Organizational Unit Name : cadet
+Common Name : taehykim
+Email Address : tehyoyee@gmail.com
+
+vim /etc/nginx/sites-available/default
+
+server {
+	listen 443 ssl;
+	ssl_protocols  TLSv1.2 TLSv1.3;
+    
+	ssl_certificate /etc/ssl/certs/server.crt;
+	ssl_certificate_key /etc/ssl/private/server_pkey.pem;
+
+	root /var/www/html;
+
+	index index.php index.html index.htm;
+
+	server_name _;
+
+	location / {
+		try_files $uri $uri/ =404;
+	}
+
+	location ~ \.php$ {
+		include snippets/fastcgi-php.conf;
+        
+		# fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+		fastcgi_param SCRIPT_FILENAME /var/www/html/$fastcgi_script_name;
+		fastcgi_pass 172.25.0.2:9000;
+	}
+}
+
+fastcgi_param 에 fastcgi에 전달할 파라미터
+SCRIPT_FILENAME [처리할 파일위치]
+fastcgi_pass 연결
+
