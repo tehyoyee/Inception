@@ -1,7 +1,7 @@
 FROM debian:bullseye
 
 RUN apt update; \
-    apt install -y mariadb-client install php7.4 php-fpm php-cli wget curl php-mysql php-mbstring php-xml sendmail vim
+    apt install -y mariadb-client php7.4 php-fpm php-cli wget curl php-mysql php-mbstring php-xml sendmail vim
 
 RUN wget https://wordpress.org/latest.tar.gz
 RUN tar -xvf latest.tar.gz
