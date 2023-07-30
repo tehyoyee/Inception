@@ -20,6 +20,8 @@ services:
      - "443:443"
     volumes:
      - data:/var/www/html
+    depends_on:
+     - wordpress
     networks:
      - intra
 
@@ -31,6 +33,8 @@ services:
      - data:/var/www/html
     expose: 
      - "9000"
+    depends_on:
+     - mariadb
     networks:
      - intra
 networks:
