@@ -5,7 +5,8 @@ ENV USER=user1
 RUN echo "Acquire::Check-Valid-Until \"false\";\nAcquire::Check-Date \"false\";" | cat > /etc/apt/apt.conf.d/10no--check-valid-until
 RUN apt update
     # apt install -y mariadb-client php7.4 php-fpm php-cli wget curl php-mysql php-mbstring php-xml sendmail vim
-RUN apt install -y mariadb-client wget curl php7.4 php-fpm php-cli php-mysqli php-phar php-iconv sudo
+# RUN apt install -y mariadb-client wget curl php7.4 php-fpm php-cli php-mysqli php-phar php-iconv sudo
+RUN apt-get install php php-mysql php-fpm php-curl php-gd php-intl php-mbstring php-soap php-xml php-xmlrpc php-zip mariadb-server mariadb-client
 RUN wget https://wordpress.org/latest.tar.gz
 RUN tar -xvf latest.tar.gz
 RUN mkdir -p /var/www/html
