@@ -1,12 +1,12 @@
 FROM debian:bullseye
-ENV USER=user1
+# ENV USER=user1
 
 # system 시간과 달라서 문제가 되어 시간 맞춰주는 명령 실행 후 실행
-RUN echo "Acquire::Check-Valid-Until \"false\";\nAcquire::Check-Date \"false\";" | cat > /etc/apt/apt.conf.d/10no--check-valid-until
-RUN apt update
+# RUN echo "Acquire::Check-Valid-Until \"false\";\nAcquire::Check-Date \"false\";" | cat > /etc/apt/apt.conf.d/10no--check-valid-until
+RUN apt update && apt upgrade -y && apt -y install php7.4 php-fpm php-cli wget curl php-mysql php-mbstring php-xml sendmail vim
     # apt install -y mariadb-client php7.4 php-fpm php-cli wget curl php-mysql php-mbstring php-xml sendmail vim
 # RUN apt install -y mariadb-client wget curl php7.4 php-fpm php-cli php-mysqli php-phar php-iconv sudo
-RUN apt install -y php php-mysql php-fpm php-curl php-gd php-intl php-mbstring php-soap php-xml php-xmlrpc php-zip mariadb-server mariadb-client
+# RUN apt install -y php php-mysql php-fpm php-curl php-gd php-intl php-mbstring php-soap php-xml php-xmlrpc php-zip mariadb-server mariadb-client
 RUN wget https://wordpress.org/latest.tar.gz
 RUN tar -xvf latest.tar.gz
 RUN mkdir -p /var/www/html
