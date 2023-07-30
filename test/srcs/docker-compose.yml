@@ -37,6 +37,7 @@ services:
      - mariadb
     networks:
      - intra
+    tty: true
 networks:
   intra:
     driver: bridge
