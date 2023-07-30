@@ -88,3 +88,4 @@ fastcgi_param 에 fastcgi에 전달할 파라미터
 SCRIPT_FILENAME [처리할 파일위치]
 fastcgi_pass 연결
 
+service nginx start

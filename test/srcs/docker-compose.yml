@@ -14,7 +14,7 @@ services:
         tty: true
     nginx:
         container_name: nginx
-        image: debian:bullseye
+        build: ./requirements/nginx
         restart: always
         ports:
             - "443:443"
@@ -25,7 +25,7 @@ services:
         tty: true
     wordpress:
         container_name: wordpress
-        image: debian:bullseye
+        build: ./requirements/wordpress
         restart: always
         volumes:
             - data:/var/www/html
