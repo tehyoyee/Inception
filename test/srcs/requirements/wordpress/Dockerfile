@@ -12,10 +12,10 @@ RUN rm -r /wordpress latest.tar.gz
 COPY ./conf/wp-config.php /var/www/html/
 #var/www/html/wp-config-sample.php /var/www/html/wp-config.php
 RUN rm /etc/php/7.4/fpm/pool.d/www.conf
-COPY ./conf/www.conf /etc/php/7.3/fpm/pool.d
-#COPY ./conf /var/www/
+COPY ./conf/www.conf /etc/php/7.4/fpm/pool.d
+COPY ./conf /var/www/
 
 EXPOSE 9000
 
-RUN php7.4-fpm start
+RUN service php7.4-fpm start
 # CMD ["bash", "/var/www/setup.sh"]

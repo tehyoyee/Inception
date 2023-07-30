@@ -55,7 +55,7 @@ Organization NAme : 42Seoul
 Organizational Unit Name : cadet
 Common Name : taehykim
 Email Address : tehyoyee@gmail.com
-
+	
 vim /etc/nginx/sites-available/default
 
 server {
