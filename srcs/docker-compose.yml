@@ -1,63 +1,60 @@
-version: "3"
+version: "3.5"
 
-services:
-  nginx:
-    build: ./requirements/nginx
-    container_name: nginx
-    ports:
-      - 443:443
-    restart: always
-    volumes:
-      - wp:/var/www/wordpress
-    depends_on:
-      - wordpress
-    networks:
-      - inception
-
-  wordpress:
-    build: ./requirements/wordpress
-    container_name: wordpress
-    expose:
-      - "9000"
-    restart: always
-    volumes:
-      - wp:/var/www/wordpress
-    depends_on :
-      - mariadb
-    networks:
-      - inception
-    env_file:
-      - .env
-
-  mariadb :
-    build : ./requirements/mariadb
-    container_name: mariadb
-    expose:
-      - "3306"
-    restart: always
-    networks:
-      - inception
-    volumes:
-      - db:/var/lib/mysql
-    env_file:
-      - .env
+networks:
+  app-network:
+    name: app-network
+    driver: bridge
 
 volumes:
   wp:
+    driver: local
     name: wp
-    driver: local
     driver_opts:
-      type: volume
-      device: /home/taehykim/data/wp
+      type: none
       o: bind
+      device: /home/taehykim/data/wordpress
   db:
-    name: db
     driver: local
+    name: db
     driver_opts:
-      type: volume
+      type: none
       o: bind
-      device: /home/taehykim/data/db
+      device: /home/taehykim/data/mariadb
 
-networks:
-  inception:
-    driver: bridge
+services:
+  mariadb:
+    container_name: mariadb
+    build: ./requirements/mariadb
+    env_file:
+      - .env
+    volumes:
+      - db:/var/lib/mysql
+    networks:
+      - app-network
+    restart: unless-stopped
+
+  wordpress:
+    container_name: wordpress
+    build: ./requirements/wordpress
+    env_file:
+      - .env
+    depends_on:
+      - mariadb
+    volumes:
+      - wp:/var/www/html
+    networks:
+      - app-network
+    restart: unless-stopped
+
+  nginx:
+    container_name: nginx
+    build: ./requirements/nginx
+    ports:
+      - "443:443"
+    depends_on:
+      - wordpress
+    volumes:
+      - wp:/var/www/html
+    networks:
+      - app-network
+    restart: unless-stopped
