@@ -26,5 +26,6 @@ COPY ./conf/default.conf /etc/nginx/sites-available/
 
 COPY ./tools/script.sh /
 
+CMD ["nginx", "-g", "daemon off;"]
 
-CMD [ "/script.sh" ]
+# CMD [ "/script.sh" ]
