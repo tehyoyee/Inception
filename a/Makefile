@@ -1,14 +1,11 @@
-NAME = inception
-
-VOLUME_PATH		:= /home/taehykim/data
-HOST_LINK	:= "127.0.0.1	taehykim.42.fr" > /etc/hosts
+NAME = Inception
 
 all		:	$(NAME)
 
 $(NAME)	:
-	@sudo mkdir -p $(VOLUME_PATH)/db/
-	@sudo mkdir -p $(VOLUME_PATH)/wordpress/
-	@sudo echo $(HOST_LINK)
+	@sudo mkdir -p /home/taehykim/db/
+	@sudo mkdir -p /home/taehykim/wordpress/
+	@sudo echo 127.0.0.1 taehykim.42.fr > /etc/hosts
 	@sudo docker compose -f ./srcs/docker-compose.yml up --build -d
 
 up		:
@@ -21,7 +18,7 @@ clean	:
 	@sudo docker compose -f ./srcs/docker-compose.yml down --rmi all --volumes
 
 fclean	: clean
-	@sudo rm -rf $(VOLUME_PATH)
+	@sudo rm -rf /home/taehykim
 
 re	: fclean all
 
