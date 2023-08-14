@@ -8,7 +8,6 @@ RUN openssl req -newkey rsa:4096 -days 365 -nodes -x509 -subj "/C=KR/ST=Seoul/L=
 RUN mkdir -p /var/www/html
 
 COPY ./conf/default.conf /etc/nginx/http.d/default.conf
-COPY ./tools/index.html /var/www/html/index.html
 
 EXPOSE 443
 
