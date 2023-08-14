@@ -14,6 +14,7 @@
 # CMD ["nginx", "-g", "daemon off;"]
 FROM debian:buster
 
+RUN echo "Acquire::Check-Valid-Until \"false\";\nAcquire::Check-Date \"false\";" | cat > /etc/apt/apt.conf.d/10no--check-valid-until
 
 RUN apt -y update && apt install -y nginx && apt install openssl -y
 
