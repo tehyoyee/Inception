@@ -20,13 +20,13 @@
 
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
-define( 'DB_NAME', 'wordpressDB' );
+define( 'DB_NAME', 'db1' );
 
 /** MySQL database username */
-define( 'DB_USER', 'taehykim' );
+define( 'DB_USER', 'user' );
 
 /** MySQL database password */
-define( 'DB_PASSWORD', 'tae1234' );
+define( 'DB_PASSWORD', 'pwd' );
 
 /** MySQL hostname */
 define( 'DB_HOST', 'mariadb' );
@@ -48,14 +48,17 @@ define( 'WP_ALLOW_REPAIR', true );
  *
  * @since 2.6.0
  */
-define('AUTH_KEY',         'i4&7<Gt{G3b*3g,_+!S>7Md,-)DkEltv:k`=K*Z(n8C<[}yalWClvP/xN74b)P#j');
-define('SECURE_AUTH_KEY',  '(Mm?Ii-*XDnU=t;%?)C>8)8.,-VF=Q$XKo=]/6#w@F%kvTda}l>:m5CwpEyEM Y.');
-define('LOGGED_IN_KEY',    'Ou>i;SnW`Z:P.oYrDFS5$PACW;OK!Hx%m^><;I~0aBb_hm#Ei1M/QS@C.O]o(AL]');
-define('NONCE_KEY',        'd$0T,ZS{M*lRI&8s}r$[~26oU`4PU*AGD};%m~UCr:P20eJtXCH1oA%cD)Osl9z+');
-define('AUTH_SALT',        'CVJtT`ek}+SnGRT/|T1#MTtCvt:OTIg4N)zW@|^l-Php@hM:6=,I3m1ZxId]Q:t}');
-define('SECURE_AUTH_SALT', ':!+pyo?cP|}e.hb&r5`v;-SyB+ eovDD5{F>!1Y}uAunEB+kHg2[xQj3S?f*DapA');
-define('LOGGED_IN_SALT',   '30gM%x];-WflG|bZ&|vizD|t ew+SI;,hX2e9<yLQSlOh`Pz~.=<V/nXb`+PPer2');
-define('NONCE_SALT',       'ON:GSmUZ5`erP7XR$w~=%+)n}$V(v@.7pj1d`{F8`hYure;~|$y=yAW;+pYHv{>=');   
+define( 'AUTH_KEY',         '):Uw9 :|7$m3yy=c^IM%d8}zG6yXY%25SDUyr.r#GcDP)[b25Yn$sDLNwR~I=kwq' );
+define( 'SECURE_AUTH_KEY',  'lBWxAzhu=StQ(s-[t_D8yH8_`0NiM~d[m q<{Hri]n#UM3J;@x[ne;,k<~cN`~%,' );
+define( 'LOGGED_IN_KEY',    ' /e+%ecWs`>hA<s`|+7rmujt>3MA}GD*n=D7W%$8h*Xc!jP?hn+fw0#;;g{Ywl@k' );
+define( 'NONCE_KEY',        ' -cX{xQc|GjD$=kXd,|lUX5)*oT)ru3^px-iU{q;`1If22EqIwA0/lPIIbpbtB=C' );
+define( 'AUTH_SALT',        'U9LX s1@q6$[*VV,MUhL7tS@;I9t_u*uDQIfZdG.ei1Amy$*.RI_TSTz#y=X.>Wq' );
+define( 'SECURE_AUTH_SALT', '0<MR&l4v=cZ)8Ke/#ip>2<Ed@ j<#pvLaOMc-jEFM9^tr`X*T2qDIB@)gg.0<e2V' );
+define( 'LOGGED_IN_SALT',   'xSHh4B]r[~)h%n$f(dCt;mD}#q gy$<{ >qGgPS>XH*]jH>W<!10>H<_16l{(OdP' );
+define( 'NONCE_SALT',       '7Ea$kvU|lkO8&X]b7^#K+w! lH2)SOelLiaYYX(Zz)Ebk_]-#m,J&aM<*JedFa| ' );
+
+define( 'WP_REDIS_HOST', 'redis' );
+define( 'WP_REDIS_PORT', 6379 );     
 
 
 define('WP_CACHE', true);
