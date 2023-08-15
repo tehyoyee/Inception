@@ -1,14 +1,10 @@
 FROM debian:buster
 
-RUN echo "Acquire::Check-Valid-Until \"false\";\nAcquire::Check-Date \"false\";" | cat > /etc/apt/apt.conf.d/10no--check-valid-until
+#RUN echo "Acquire::Check-Valid-Until \"false\";\nAcquire::Check-Date \"false\";" | cat > /etc/apt/apt.conf.d/10no--check-valid-until
 RUN apt-get update -y
-#&& apt-get install mariadb-server -y
-RUN sudo apt-get install mariadb-server galera mariadb-client libmariadb3 mariadb-backup mariadb-common -y
+RUN apt-get install mariadb-server galera mariadb-client libmariadb3 mariadb-backup mariadb-common -y
 COPY ./tools/50-server.cnf /etc/mysql/mariadb.conf.d/
-
-
 COPY ./tools/script.sh /
-
 
 CMD ["/script.sh"]
 
