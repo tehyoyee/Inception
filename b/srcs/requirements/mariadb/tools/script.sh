@@ -1,9 +1,6 @@
 #!/bin/bash
 
-
-
 service mysql start 
-
 
 echo "CREATE DATABASE IF NOT EXISTS wordpressDB ;" > db1.sql
 echo "CREATE USER IF NOT EXISTS '$taehykim'@'%' IDENTIFIED BY 'tae1234' ;" >> db1.sql
