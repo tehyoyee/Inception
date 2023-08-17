@@ -13,9 +13,9 @@ wp core download --locale=ko_KR --allow-root
 mv /var/www/html/wordpress/wp-config-sample.php /var/www/html/wordpress/wp-config.php
 # mv /wp-config.php /var/www/html/wordpress/wp-config.php
 
-sed -i -r "s/db1/$DB_WORDPRESS/1"   wp-config.php
-sed -i -r "s/user/$ADMIN/1"  wp-config.php
-sed -i -r "s/pwd/$ADMIN_PW/1"    wp-config.php
+sed -i -r "s/database_name_here/$DB_WORDPRESS/1"   wp-config.php
+sed -i -r "s/username_here/$ADMIN/1"  wp-config.php
+sed -i -r "s/password_here/$ADMIN_PW/1"    wp-config.php
 
 # wp config create --dbname=$DB_WORDPRESS --dbuser=$ADMIN --dbpass=$ADMIN_PW --dbhost=$DB_HOST --dbcharset="utf8"
 wp core install --url=$DOMAIN_URL/ --title=$TITLE --admin_user=$ADMIN --admin_password=$ADMIN_PW --admin_email=$ADMIN_EMAIL --skip-email --allow-root
