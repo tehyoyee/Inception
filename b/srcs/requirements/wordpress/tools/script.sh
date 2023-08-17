@@ -18,8 +18,8 @@ chmod +x wp-cli.phar
 mv wp-cli.phar /usr/local/bin/wp
 
 
-# wp core download --allow-root
-wp core download --locale=ko_KR
+wp core download --allow-root
+# wp core download --locale=ko_KR
 
 mv /var/www/html/wp-config-sample.php /var/www/html/wp-config.php
 
