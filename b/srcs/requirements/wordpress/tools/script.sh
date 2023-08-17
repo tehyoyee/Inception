@@ -30,12 +30,15 @@ sed -i -r "s/db1/$DB_WORDPRESS/1"   wp-config.php
 sed -i -r "s/user/$ADMIN/1"  wp-config.php
 sed -i -r "s/pwd/$ADMIN_PW/1"    wp-config.php
 
-wp core install --url=$DOMAIN_NAME/ --title=$WP_TITLE --admin_user=$WP_ADMIN_USR --admin_password=$WP_ADMIN_PWD --admin_email=$WP_ADMIN_EMAIL --skip-email --allow-root
+wp core install --url=$DOMAIN_URL/ --title=$TITLE --admin_user=$ADMIN --admin_password=$ADMIN_PW --admin_email=$ADMIN_EMAIL --skip-email --allow-root
+
+#
+# wp config create --dbname=$DB_WORDPRESS --dbuser=$ADMIN --dbpass=$ADMIN_PW --dbhost=$DB_HOST --dbcharset="utf8"
 
 
 
 
-wp user create $WP_USR $WP_EMAIL --role=author --user_pass=$WP_PWD --allow-root
+wp user create $WP_USER $WP_EMAIL --role=author --user_pass=$WP_PASSWORD --allow-root
 
 
 wp theme install astra --activate --allow-root
