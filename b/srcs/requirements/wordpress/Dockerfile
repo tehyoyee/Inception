@@ -47,7 +47,7 @@ FROM	debian:buster
 
 RUN apt update -y 
 RUN apt install php-fpm php-mysql -y
-RUN apt install curl -y
+RUN apt install curl wget -y
 
 # Create www-data user and assign to the existing www-data group
 RUN		adduser -S -D -H -h /var/www -s /sbin/nologin -G www-data -g 'Web Server' www-data
