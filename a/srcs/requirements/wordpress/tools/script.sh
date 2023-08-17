@@ -10,7 +10,7 @@ chmod +x wp-cli.phar
 mv wp-cli.phar /usr/bin/wp
 
 wp core download --locale=ko_KR --allow-root
-# mv /var/www/html/wordpress/wp-config-sample.php /var/www/html/wordpress/wp-config.php
+mv /var/www/html/wordpress/wp-config-sample.php /var/www/html/wordpress/wp-config.php
 mv /wp-config.php /var/www/html/wordpress/wp-config.php
 
 sed -i -r "s/database_name_here/$DB_WORDPRESS/1"   wp-config.php
