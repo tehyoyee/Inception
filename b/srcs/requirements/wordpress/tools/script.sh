@@ -19,7 +19,7 @@ chmod +x wp-cli.phar
 mv wp-cli.phar /usr/bin/wp
 
 
-wp core download --allow-root
+wp core download --locale=ko_KR --allow-root
 
 mv /var/www/html/wordpress/wp-config-sample.php /var/www/html/wordpress/wp-config.php
 
@@ -50,7 +50,7 @@ wp plugin update --all --allow-root
 
 
  
-sed -i 's/listen = \/run\/php\/php7.3-fpm.sock/listen = 9000/g' /etc/php/7.3/fpm/pool.d/www.conf
+sed -i 's/listen = \/run\/php\/php7.3-fpm.sock/listen = 0.0.0.0:9000/g' /etc/php/7.3/fpm/pool.d/www.conf
 
 mkdir /run/php
 
