@@ -3,10 +3,10 @@
 
 
 # create directory to use in nginx container later and also to setup the wordpress conf
-mkdir /var/www/
-mkdir /var/www/html
+# mkdir /var/www/
+mkdir -p /var/www/html/wordpress
 
-cd /var/www/html
+cd /var/www/html/wordpress
 
 
 rm -rf *
@@ -21,9 +21,9 @@ mv wp-cli.phar /usr/local/bin/wp
 wp core download --allow-root
 # wp core download --locale=ko_KR
 
-mv /var/www/html/wp-config-sample.php /var/www/html/wp-config.php
+mv /var/www/html/wordpress/wp-config-sample.php /var/www/html/wordpress/wp-config.php
 
-mv /wp-config.php /var/www/html/wp-config.php
+mv /wp-config.php /var/www/html/wordpress/wp-config.php
 
 
 sed -i -r "s/db1/$DB_WORDPRESS/1"   wp-config.php
