@@ -26,9 +26,9 @@ mv /var/www/html/wordpress/wp-config-sample.php /var/www/html/wordpress/wp-confi
 mv /wp-config.php /var/www/html/wordpress/wp-config.php
 
 
-sed -i -r "s/db1/$db_name/1"   wp-config.php
-sed -i -r "s/user/$db_user/1"  wp-config.php
-sed -i -r "s/pwd/$db_pwd/1"    wp-config.php
+sed -i -r "s/db1/$DB_WORDPRESS/1"   wp-config.php
+sed -i -r "s/user/$ADMIN/1"  wp-config.php
+sed -i -r "s/pwd/$ADMIN_PW/1"    wp-config.php
 
 wp core install --url=$DOMAIN_NAME/ --title=$WP_TITLE --admin_user=$WP_ADMIN_USR --admin_password=$WP_ADMIN_PWD --admin_email=$WP_ADMIN_EMAIL --skip-email --allow-root
 
