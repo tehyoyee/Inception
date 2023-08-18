@@ -4,7 +4,7 @@ all: $(NAME)
 
 $(NAME)	:
 	@sudo mkdir -p /home/taehykim/data/db/
-	@sudo mkdir -p /home/taehykim/data/wordpress/
+	@sudo mkdir -p /home/taehykim/data/wp/
 	@sudo echo 127.0.0.1 taehykim.42.fr > /etc/hosts
 	@sudo docker-compose -f ./srcs/docker-compose.yml up --build -d
 

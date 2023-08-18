@@ -21,7 +21,7 @@ services:
       - "9000"
     restart: always
     volumes:
-      - wp_volume:/var/www/html
+      - wp:/var/www/html
     depends_on :
       - mariadb
     networks:
@@ -36,7 +36,7 @@ services:
       - 443:443
     restart: always
     volumes:
-      - wp_volume:/var/www/html
+      - wp:/var/www/html
     depends_on:
       - wordpress
     networks:
@@ -48,7 +48,7 @@ volumes:
     driver: local
     driver_opts:
       type: volume
-      device: /home/taehykim/data/wordpress
+      device: /home/taehykim/data/wp
       o: bind
   db:
     name: db
