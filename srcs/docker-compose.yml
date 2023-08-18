@@ -13,7 +13,6 @@ services:
       - db:/var/lib/mysql
     env_file:
       - .env
-    tty: true
 
   wordpress:
     build: ./requirements/wordpress
@@ -44,12 +43,13 @@ services:
       - inception-net
 
 volumes:
-  wp_volume:
-     driver: local
-     driver_opts:
-       type: volume
-       device: /home/taehykim/data/wordpress
-       o: bind
+  wp:
+    name: wp
+    driver: local
+    driver_opts:
+      type: volume
+      device: /home/taehykim/data/wordpress
+      o: bind
   db:
     name: db
     driver: local
