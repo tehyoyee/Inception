@@ -7,10 +7,10 @@ services:
     expose:
       - "3306"
     restart: always
-    networks:
-      - inception-net
     volumes:
       - db:/var/lib/mysql
+    networks:
+      - inception-net
     env_file:
       - .env
 
