@@ -10,14 +10,15 @@ chmod +x wp-cli.phar
 mv wp-cli.phar /usr/bin/wp
 
 wp core download --locale=ko_KR --allow-root
-mv /var/www/html/wordpress/wp-config-sample.php /var/www/html/wordpress/wp-config.php
+# mv /var/www/html/wordpress/wp-config-sample.php /var/www/html/wordpress/wp-config.php
+rm /var/www/html/wordpress/wp-config-sample.php
 mv /wp-config.php /var/www/html/wordpress/wp-config.php
 
 # sed -i -r "s/database_name_here/$DB_WORDPRESS/1"   wp-config.php
 # sed -i -r "s/username_here/$ADMIN/1"  wp-config.php
 # sed -i -r "s/password_here/$ADMIN_PW/1"    wp-config.php
 
-wp config create --dbname=$DB_WORDPRESS --dbuser=$ADMIN --dbpass=$ADMIN_PW --dbhost=$DB_HOST --dbcharset="utf8"
+# wp config create --dbname=$DB_WORDPRESS --dbuser=$ADMIN --dbpass=$ADMIN_PW --dbhost=$DB_HOST --dbcharset="utf8"
 wp core install --url=$DOMAIN_URL/ --title=$TITLE --admin_user=$ADMIN --admin_password=$ADMIN_PW --admin_email=$ADMIN_EMAIL --skip-email --allow-root
 wp user create $WP_USER $WP_EMAIL --role=author --user_pass=$WP_PASSWORD --allow-root
 wp plugin update --all --allow-root
