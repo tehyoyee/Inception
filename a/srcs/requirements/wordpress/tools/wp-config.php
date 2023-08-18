@@ -58,12 +58,6 @@ define('SECURE_AUTH_SALT', 'K]f?/z,Tn^[])s>c>jz4s%(d)V|8A[nZRY}GYnH=/u:+6-RPe[vb
 define('LOGGED_IN_SALT',   'z+N?_QK&OaKV*z|<c,.(HR4-QNg+j;U&c&,+)xMgeg..pRnv4M(|-WM1!A||nWU/');
 define('NONCE_SALT',       ' +H2$.*HTE47U9bl4&)tKw92-b[?f[y.hXGkrtaA*sYOi/do7-=i&,9b5Yi{w-]s');
 
-define( 'WP_REDIS_HOST', 'redis' );
-define( 'WP_REDIS_PORT', 6379 );     
-
-
-define('WP_CACHE', true);
-
 /**#@-*/
 
 /**
