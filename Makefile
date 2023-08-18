@@ -1,6 +1,6 @@
 NAME = Inception
 
-all		:	$(NAME)
+all: $(NAME)
 
 $(NAME)	:
 	@sudo mkdir -p /home/taehykim/data/db/
@@ -8,18 +8,18 @@ $(NAME)	:
 	@sudo echo 127.0.0.1 taehykim.42.fr > /etc/hosts
 	@sudo docker-compose -f ./srcs/docker-compose.yml up --build -d
 
-up		:
+up:
 	@sudo docker-compose -f ./srcs/docker-compose.yml up -d
 
-down	:
+down:
 	@sudo docker-compose -f ./srcs/docker-compose.yml down
 
-clean	:
+clean:
 	@sudo docker-compose -f ./srcs/docker-compose.yml down --rmi all --volumes
 
-fclean	: clean
+fclean: clean
 	@sudo rm -rf /home/taehykim/data
 
-re	: fclean all
+re: fclean all
 
 .PHONY	: all down clean fclean re
