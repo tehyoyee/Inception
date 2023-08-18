@@ -1,4 +1,4 @@
-FROM debian:buster
+FROM debian:bullseye
 
 RUN apt-get -y update && apt-get install -y nginx && apt-get install openssl -y
 RUN mkdir -p /var/www/html
