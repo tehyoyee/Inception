@@ -1,7 +1,7 @@
 #!/bin/bash
 
-mkdir -p /var/www/html/wp
-cd /var/www/html/wp
+mkdir -p /var/www/html/
+cd /var/www/html/
 
 rm -rf *
 curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar 
