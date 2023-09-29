@@ -30,8 +30,6 @@ services:
       - inception-net
     env_file:
       - .env
-    tty:
-      true
 
   nginx:
     build: ./requirements/nginx
@@ -46,6 +44,17 @@ services:
       - wordpress
     networks:
       - inception-net
+
+  redis:
+    build: ./requirements/bonus/redis
+    container_name: redis
+    image: redis
+    ports:
+      - "6379:6379"
+    networks:
+      - inception-net
+    restart: always
+    # tty: true
 
 volumes:
   wp:
