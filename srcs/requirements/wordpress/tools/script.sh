@@ -21,6 +21,7 @@ sed -i 's/'localhost'/'${DB_HOST}'/g' /var/www/html/wp-config.php
 wp core install --url=$DOMAIN_URL/ --title=$TITLE --admin_user=$ADMIN --admin_password=$ADMIN_PW --admin_email=$ADMIN_EMAIL --skip-email --allow-root
 wp user create $WP_USER $WP_USER_EMAIL --role=author --user_pass=$WP_USER_PW --allow-root
 wp plugin update --all --allow-root
+wp redis enable --path=/var/www/html
 sed -i 's/listen = \/run\/php\/php7.4-fpm.sock/listen = 0.0.0.0:9000/g' /etc/php/7.4/fpm/pool.d/www.conf
 
 mkdir /run/php

@@ -8,7 +8,10 @@ RUN echo "maxmemory-policy allkeys-lru" >> /etc/redis/redis.conf
 
 EXPOSE 6379
 
-RUN mkdir /var/log/redis
-RUN chmod 777 /var/log/redis
+RUN mkdir -p /var/run/redis && touch /var/run/redis/redis-server.pid
+RUN chmod -R 777 /var/run/redis
 
-CMD [ "redis-server" , "/etc/redis/redis.conf" ]
+RUN mkdir -p /var/log/redis && touch /var/log/redis/redis-server.log
+RUN chmod -R 777 /var/log/redis
+
+CMD [ "redis-server" , "/etc/redis/redis.conf", "--daemonize", "no" ]

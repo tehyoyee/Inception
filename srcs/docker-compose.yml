@@ -54,8 +54,18 @@ services:
     networks:
       - inception-net
     restart: always
-    # tty: true
-
+  adminer:
+    build: ./requirements/bonus/adminer
+    container_name: adminer
+    depends_on:
+      - mariadb
+    image: adminer
+    ports:
+      - "8080:8080"
+    networks:
+     - inception-net
+    restart: always
+    
 volumes:
   wp:
     name: wp
