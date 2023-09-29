@@ -54,6 +54,7 @@ services:
     networks:
       - inception-net
     restart: always
+
   adminer:
     build: ./requirements/bonus/adminer
     container_name: adminer
@@ -65,7 +66,16 @@ services:
     networks:
      - inception-net
     restart: always
-    
+
+  flask:
+    build: ./requirements/bonus/flask
+    container_name: flask
+    image: flask
+    ports:
+      - "5000:5000"
+    restart: always
+
+
 volumes:
   wp:
     name: wp

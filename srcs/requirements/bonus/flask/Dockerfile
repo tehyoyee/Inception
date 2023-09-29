@@ -1,9 +1,9 @@
 FROM python:alpine3.16
 
-COPY ./requirements/bonus/flask/conf/requirements.txt requirements.txt
+COPY ./conf/requirements.txt requirements.txt
 RUN pip install -r requirements.txt
 
-COPY ./requirements/bonus/flask/tools/app.py /app/
+COPY ./tools/app.py /app/
 
 WORKDIR /app
 
