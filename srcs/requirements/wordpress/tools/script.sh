@@ -10,13 +10,17 @@ chmod +x wp-cli.phar
 mv wp-cli.phar /usr/bin/wp
 
 wp core download --locale=ko_KR --allow-root
-rm /var/www/html/wp-config-sample.php
 mv /wp-config.php /var/www/html/wp-config.php
 
+sed -i 's/MY_DB_NAME/'${DB_NAME}'/g' /var/www/html/wp-config.php
+sed -i 's/MY_DB_USER/'${ADMIN}'/g' /var/www/html/wp-config.php
+sed -i 's/MY_DB_PW/'${ADMIN_PW}'/g' /var/www/html/wp-config.php
+
 wp core install --url=$DOMAIN_URL/ --title=$TITLE --admin_user=$ADMIN --admin_password=$ADMIN_PW --admin_email=$ADMIN_EMAIL --skip-email --allow-root
-wp user create $WP_USER $WP_EMAIL --role=author --user_pass=$WP_PASSWORD --allow-root
+wp user create $WP_USER $WP_USER_EMAIL --role=author --user_pass=$WP_USER_PW --allow-root
 wp plugin update --all --allow-root
 sed -i 's/listen = \/run\/php\/php7.4-fpm.sock/listen = 0.0.0.0:9000/g' /etc/php/7.4/fpm/pool.d/www.conf
+
 mkdir /run/php
 
-/usr/sbin/php-fpm7.4 -F
+exec /usr/sbin/php-fpm7.4 -F
