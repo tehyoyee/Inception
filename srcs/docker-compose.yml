@@ -30,6 +30,8 @@ services:
       - inception-net
     env_file:
       - .env
+    tty:
+      true
 
   nginx:
     build: ./requirements/nginx
