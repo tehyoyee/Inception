@@ -67,14 +67,6 @@ services:
      - inception-net
     restart: always
 
-  # flask:
-  #   build: ./requirements/bonus/flask
-  #   container_name: flask
-  #   image: flask
-  #   ports:
-  #     - "5000:5000"
-  #   restart: always
-
   website:
     build: ./requirements/bonus/website
     container_name: website
@@ -82,24 +74,6 @@ services:
     ports:
       - "1000:1000"
     restart: always
-
-  vsftpd:
-    build: ./requirements/bonus/vsftpd
-    # args:
-    #   FTP_USR: ${FTP_USR}
-    #   FTP_PWD: ${FTP_PWD}
-    container_name: vsftpd
-    image: vsftpd
-    ports:
-      - "21:21"
-    volumes:
-      - wp:/var/www/html
-    networks:
-     - inception-net
-    restart: always
-    env_file:
-      - .env
-    # tty: true
 
   cadvisor:
     container_name: cadvisor
