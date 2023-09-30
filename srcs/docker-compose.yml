@@ -75,6 +75,13 @@ services:
       - "5000:5000"
     restart: always
 
+  website:
+    build: ./requirements/bonus/website
+    container_name: website
+    image: website
+    ports:
+      - "1000:1000"
+    restart: always
 
 volumes:
   wp:

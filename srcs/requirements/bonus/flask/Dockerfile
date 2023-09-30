@@ -1,4 +1,4 @@
-FROM python:alpine3.16
+FROM python:debian:bullseye
 
 COPY ./conf/requirements.txt requirements.txt
 RUN pip install -r requirements.txt

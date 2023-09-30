@@ -1,15 +1,12 @@
-FROM alpine:3.16
+FROM debian:bullseye
 
-RUN apk update && apk upgrade && apk add --no-cache nginx && \
-    echo "server {" > /etc/nginx/http.d/default.conf && \
-    echo "listen 1000 default_server;" >> /etc/nginx/http.d/default.conf && \
-    echo "listen [::]:1000 default_server;" >> /etc/nginx/http.d/default.conf && \
-    echo "root    /var/www/html;" >> /etc/nginx/http.d/default.conf && \
-    echo "location / {" >> /etc/nginx/http.d/default.conf && \
-    echo "    try_files \$uri /index.html;" >> /etc/nginx/http.d/default.conf && \
-    echo "}}" >> /etc/nginx/http.d/default.conf
+RUN apt-get update && apt-get upgrade
+RUN apt-get install -y nginx
 
-COPY requirements/bonus/website/conf/* /var/www/html/
+RUN sed -i 's/listen 80 default_server/listen 1000 default_server/g' /etc/nginx/sites-available/default
+RUN sed -i 's/listen [::]:80 default_server/listen [::]:1000 default_server/g' /etc/nginx/sites-available/default
+
+COPY /conf/* /var/www/html/
 
 EXPOSE 1000
 
