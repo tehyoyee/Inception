@@ -62,18 +62,18 @@ services:
       - mariadb
     image: adminer
     ports:
-      - "8080:8080"
+      - "8081:8081"
     networks:
      - inception-net
     restart: always
 
-  flask:
-    build: ./requirements/bonus/flask
-    container_name: flask
-    image: flask
-    ports:
-      - "5000:5000"
-    restart: always
+  # flask:
+  #   build: ./requirements/bonus/flask
+  #   container_name: flask
+  #   image: flask
+  #   ports:
+  #     - "5000:5000"
+  #   restart: always
 
   website:
     build: ./requirements/bonus/website
@@ -81,6 +81,39 @@ services:
     image: website
     ports:
       - "1000:1000"
+    restart: always
+
+  vsftpd:
+    build: ./requirements/bonus/vsftpd
+    # args:
+    #   FTP_USR: ${FTP_USR}
+    #   FTP_PWD: ${FTP_PWD}
+    container_name: vsftpd
+    image: vsftpd
+    ports:
+      - "21:21"
+    volumes:
+      - wp:/var/www/html
+    networks:
+     - inception-net
+    restart: always
+    env_file:
+      - .env
+    # tty: true
+
+  cadvisor:
+    container_name: cadvisor
+    build: ./requirements/bonus/cadvisor
+    image: cadvisor
+    ports:
+      - "8080:8080"
+    networks:
+      - inception-net
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:ro 
+      - /sys:/sys:ro 
+      - /var/lib/docker/:/var/lib/docker:ro
     restart: always
 
 volumes:
